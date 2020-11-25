@@ -7,3 +7,13 @@ Base on the article [Importing IP2Location data into Redis and querying with PHP
 Sample db files can be found here: [https://www.ip2location.com/development-libraries](https://www.ip2location.com/development-libraries)
 
 Test code is in `main.go`, it demonstrates how to import data and read it.
+
+You can use `docker-compose` in `docker/` to run redis with grafana.
+
+```
+$ docker-compose up
+```
+
+Access `http://localhost:3000` with `admin/admin` credential. (default Grafana credential), 
+
+add Redis as data sources in Grafana for monitoring (`redis://redis:6379`), import the default Redis dashboards as well to monitor Redis.

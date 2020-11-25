@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  grafana:
+    # use build.sh first
+    image: grafana-redis-custom
+    build:
+      context: .
+      dockerfile: grafanaOfficialDockerfile
+      args:
+        - "GRAFANA_VERSION=latest"
+        - "GF_INSTALL_PLUGINS=redis-datasource"
+    volumes:
+      - $PWD/grafana-storage:/var/lib/grafana
+    ports:
+      - 3000:3000
+  redis:
+    image: redis:6.0.9-alpine
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - $PWD/redis-data:/var/lib/redis
+    environment:
+      - REDIS_REPLICATION_MODE=master
+

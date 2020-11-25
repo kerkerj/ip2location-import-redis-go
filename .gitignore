@@ -1,1 +1,5 @@
 .idea
+
+# docker-compose persistent data
+**redis-data**
+**grafana-storage**
